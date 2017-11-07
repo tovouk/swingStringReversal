@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame{
 	//set components
-	private JTextArea textArea;
+	private TextPanel textPanel;
 	private JButton btn;
 	
 	public MainFrame() {
@@ -18,8 +18,8 @@ public class MainFrame extends JFrame{
 		//set layout
 		setLayout(new BorderLayout());
 		setFont(new Font("Arial",Font.PLAIN,75));
-		textArea = new JTextArea();
-		textArea.setFont(new Font("Arial",Font.PLAIN,75));
+		textPanel = new TextPanel();
+		textPanel.setFont();
 		btn = new JButton("Click Me");
 		btn.setFont(new Font("Arial",Font.PLAIN,75));
 		
@@ -27,15 +27,15 @@ public class MainFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String text = textArea.getText();
+				String text = textPanel.getText();
 				if(text == "" || text == " ") {
-					textArea.setText("No text provided...");
+					textPanel.setText("No text provided...");
 				}else {
 					String reversed = "";
 					for(int i=text.length()-1;i>=0;i--) {
 						reversed += text.charAt(i);
 					}
-					textArea.setText(reversed);
+					textPanel.setText(reversed);
 					
 				}
 				
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame{
 			
 		});
 		
-		add(textArea, BorderLayout.CENTER);
+		add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
 		//set length and width of window
 		setSize(1500,1000);
